@@ -1,0 +1,217 @@
+@font-face {
+    font-family: FuturaPT; /* Гарнитура шрифта */
+    src: url('../fonts/Futura PT.ttf'); /* Путь к файлу со шрифтом */
+   }
+body *{
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	background: #e9eef1;
+	height: 100%;
+}
+/* Верхнее меню */
+.menu-top{
+	height: 80px;
+	width: 	100%;
+
+	position: absolute;
+	left: 0;
+	top:  0;
+
+	background: #151930;
+
+	display: 		flex;
+	align-items: 	center;
+	align-content: 	center;
+	color: white;
+}
+.menu-top img{
+	width: 		150px;
+	height: 	auto;
+	margin: 	15px 70px 15px 40px;
+	display: 	inline-block;
+}
+.menu-top ul{
+	list-style-type: none;
+	
+	display: 		inline-flex;
+	align-items: 	center;
+	align-content: 	center;
+	width: 			100vw;
+
+	font-size: 		28px;
+}
+.menu-top ul li{
+	margin-left: 	40px;
+	width: 			45px;
+	height: 		auto;
+	flex-grow: 		0;
+}
+.menu-top ul li:first-child{
+	font-size: 		36px;
+}
+.menu-top ul li:last-child{
+	flex-grow: 		1;
+	text-align: right;
+	margin-right: 40px;
+	color: #7a7ea7;
+}
+.menu-top li i{
+	transition: color 0.2s ease-in;
+}
+.menu-top li:hover i{
+	color: #8d91b3;
+	cursor: pointer;
+}
+.menu-top ul li[active]{
+	border-bottom: 1px solid #ff3602;
+}
+/*Левое меню */
+.menu-left{
+	position: fixed;
+	left: 0px;
+	bottom: 0px;
+	top: 80px;
+	background: #ffffff;
+
+	width: 300px;
+	height: calc(100vh - 80px);
+	
+	-webkit-transition: width 0.3s ease-in; 
+
+	transform-style: preserve-3d;
+	z-index: 1;
+}
+.scroll{
+	height: calc(100% - 80px);
+	overflow: scroll;
+}
+.scroll::-webkit-scrollbar{
+	width: 4px;
+	background: #ffffff;
+	padding-right: 2px;
+}  
+.scroll::-webkit-scrollbar-button { /* 2 - кнопка */
+
+}
+
+.scroll::-webkit-scrollbar-track { /* 3 - трек */
+}
+
+.scroll::-webkit-scrollbar-track-piece { /* 4 - видимая часть трека */
+}
+
+.scroll::-webkit-scrollbar-thumb { /* 5 - ползунок */
+	border-radius: 2px;
+	background-color: rgba(21, 25, 48, 0.5);
+}
+
+.scroll::-webkit-scrollbar-corner { /* 6 - уголок */
+}
+
+.scroll::-webkit-resizer { /* 7 - изменение размеров */
+}
+.menu-left.hidden{
+	width: 1px;
+}
+.menu-left ul, .clientName{ -webkit-transition: all 0.3s; transition-timing-function: cubic-bezier(0.95, 0.05, 0.795, 0.035);  }
+.menu-left.hidden *{
+	opacity: 0;
+}
+.menu-left.hidden:after{
+	content: '\f054';
+	text-indent: 1rem;
+}
+.menu-left:after{
+	position: absolute;
+	right: -1.9rem;
+	top: 50%;
+  	font-family: 'Font Awesome 5 Free';
+    text-indent: 1rem;
+    padding-left: 30px;
+  	font-weight: 600;
+  	content: '\f053'; 
+
+    border-radius: 100%;
+    background: white;
+    padding: 20px;
+    line-height: 1.5rem;
+
+    z-index: 1;
+    transform: translateZ(-1px);
+}
+.menu-left:hover:after {
+	color: #fd3500;
+}
+.menu-left .clientName{
+	margin-top: 10px;
+	margin-bottom: 10px;
+	height: 50px;
+	text-align: center;
+
+	font-family: FuturaPT;
+	color: #151930;
+	font-size: 36px;
+}
+.menu-left .menu{
+	list-style-type: none;	
+}
+.menu-left .menu .item{
+	height: auto;
+	width: 100%;
+	font-family: FuturaPT;
+	font-size: 20px;
+	color: #151930;
+	padding: 20px 0px 20px 0px;
+
+	cursor: pointer;
+	position: relative;
+
+	user-select: none;
+
+	-webkit-transition: background 0.2s ease-out;
+}
+.menu-left .menu .item:hover{
+	color: #8d91b3;
+}
+.menu-left .menu .item i:first-child{
+	padding-left: 20px;
+	margin-right: 15px;
+}
+.menu-left .menu .item i:last-child{
+	position: absolute;
+	right: 20px;
+	transition: all 0.2s ease-in;
+}
+.menu-left .menu .item.active:hover{
+	color: #151930;
+}
+.menu-left .menu .item.active{
+	background: #e5eaee;
+}
+
+.menu-left .sub-menu{
+	display: block;
+
+	width: 100%;
+}
+.menu-left .sub-menu li{
+	display: block;
+	font-family: 'Futura PT';
+	font-size: 1.3rem;
+	padding: 20px 0px 20px 60px;
+	cursor: pointer;
+	user-select: none;
+	transition: border 0.1s ease-in;
+}
+.menu-left .sub-menu li:hover{
+	background: #8d91b3;
+}
+.menu-left .sub-menu li[active]{
+	border-left: 4px solid #fd3500;
+}
+.menu-left .sub-menu li[not-active]{
+	color: #bebebe;
+}

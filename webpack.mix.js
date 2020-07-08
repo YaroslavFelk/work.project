@@ -10,6 +10,14 @@ const mix = require('laravel-mix');
  | file for the application as well as bundling up all the JS files.
  |
  */
+mix.js('resources/js/app.js', 'public/js');
+    mix.sass('resources/sass/app.scss', 'public/css')
 
-mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+mix.styles([
+    'public/css/ui-menu.css',
+    'public/css/ui-workspace.css',
+    'public/css/css/ui-modal.css',
+    'public/css/css/ui-chart.css',
+    'public/css/css/ui-notice.css',
+    'public/css/app.css'
+], 'public/css/app.css');

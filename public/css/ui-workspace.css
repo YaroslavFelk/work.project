@@ -1,0 +1,66 @@
+.ws-header{
+	background: red;
+	margin: 90px 25px 0px 330px; /* Для меню */
+	padding: 0px 40px 0px 40px;
+	background: #f8f8f8;
+	
+	height: 50px;
+
+	display: flex;
+	box-shadow: 1px 15px 20px rgba(0, 0, 0, 0.1);
+	align-items: center;
+}
+div.ctrl{
+	display: inline-block;
+	position: absolute;
+	right: 30px;
+}
+div.ctrl .dropdown-item{
+	cursor: pointer;
+}
+i.ctrl{
+	cursor: pointer;
+	font-size: 1.3rem;
+	transition: all 0.2s ease-in;
+}
+.ctrl:hover{
+	color: red;
+}
+.filter-select{
+	user-select: none;
+	border-left: 2px solid transparent;
+	-webkit-transition: all 0.1s ease-in;
+}	
+.filter-select:active{
+	border-left: 2px solid red;
+	color: black;
+	background: #f8f8f8;
+}
+.date-block{
+	width: 300px;
+}
+.ws-header .title{
+	font-family: FuturaPT;
+	font-size: 1.5rem;
+	color: #536dfe;
+	flex-grow: 1;
+	margin-left: 10px;
+}
+.ws-header .settings{
+	color: #151930;
+	font-size: 1.7rem;
+	cursor: pointer;
+}
+.ws-header .settings:hover{
+	color: #2a2e45;
+}
+.ws-header .settings:active{
+	color: #46508a;
+}
+.pointer{cursor: pointer; transition: background 0.1s ease-in;}
+.pointer:hover{
+	background: #536dfe;
+}
+.pointer:active{
+	background: #334fe9;
+}

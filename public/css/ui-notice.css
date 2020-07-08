@@ -1,0 +1,13 @@
+.notice{
+	position: fixed;
+	bottom: 50px;
+	right: 0;
+	z-index: 1000000;
+	width: 30vw;
+}
+.notice > .alert{
+	margin-bottom: .3rem;
+	padding-left: 7%;
+	opacity: 0;
+	cursor: pointer;
+}

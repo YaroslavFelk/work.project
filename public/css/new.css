@@ -1,0 +1,8 @@
+.dat-cas {
+    display: flex;
+    flex-direction: row;
+}
+
+.activated {
+    background-color: #8d91b3;
+}
