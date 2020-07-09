@@ -17,4 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/', 'SocialController@index');
+Route::get('/', 'VkController@index');
+
+Route::post('/', 'VkController@store')->name('date');
+
+Route::post('/{client}', 'VkController@client')->name('client');

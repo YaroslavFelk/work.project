@@ -7,7 +7,9 @@
                 <ul class="sub-menu" id="campaignRoster">
                     <li id="openInvite"><i class="fas fa-user-plus" style="font-size:1rem;padding-right:10px;"></i> Создать приглашение</li>
                     @foreach($clients as $client)
-                        <li id="{{$client->id}}">{{$client->name}}</li>
+                        <li id="{{$client->id}}">
+                            {{$client->name}}
+                        </li>
                     @endforeach
                 </ul>
 
@@ -16,6 +18,9 @@
                 <div class="item"><i class="fas fa-list"></i>Список кампаний<i class="fas fa-sort-down"></i></div>
                 <ul class="sub-menu" id="campaignList">
                     <li id="chAllCamp">Все кампании</li>
+                    @foreach($campaigns as $campaign)
+                        <li id="{{$campaign->id}}">{{$campaign->name}}</li>
+                    @endforeach
                 </ul>
             </li>
         </ul>

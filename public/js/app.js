@@ -32388,31 +32388,21 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.$ = window.jQuery = jquery__WEBPACK_IMPORTED_MODULE_0___default.a;
 
-jquery__WEBPACK_IMPORTED_MODULE_0___default()('#campaignRoster').click(function (event) {
-  var ul = document.getElementById('campaignRoster');
-  var target = event.target; // где был клик?
-
-  document.cookie = "clientId=".concat(target.id);
-
-  for (var i = 0; i < ul.children.length; i++) {
-    ul.children[i].classList.remove('activated');
-  }
-
-  target.classList.add('activated');
-});
 jquery__WEBPACK_IMPORTED_MODULE_0___default()(function () {
-  var dateFormat = "mm/dd/yy",
+  var dateFormat = "yy/mm/dd",
       from = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#from").datepicker({
     defaultDate: "+1w",
     changeMonth: true,
-    numberOfMonths: 1
+    numberOfMonths: 1,
+    dateFormat: "yy-mm-dd"
   }).on("change", function () {
     to.datepicker("option", "minDate", getDate(this));
   }),
       to = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#to").datepicker({
     defaultDate: "+1w",
     changeMonth: true,
-    numberOfMonths: 1
+    numberOfMonths: 1,
+    dateFormat: "yy-mm-dd"
   }).on("change", function () {
     from.datepicker("option", "maxDate", getDate(this));
   });
@@ -32421,7 +32411,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(function () {
     var date;
 
     try {
-      date = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.datepicker.parseDate(dateFormat, element.value);
+      date = jquery__WEBPACK_IMPORTED_MODULE_0___default.a.datepicker.parseDate("dd/mm/yy", element.value);
     } catch (error) {
       date = null;
     }
@@ -32429,6 +32419,27 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(function () {
     return date;
   }
 });
+var client = document.getElementById('campaignRoster');
+client.addEventListener('click', function (event) {
+  choiseIds(event, 'clientId');
+});
+var campaign = document.getElementById('campaignList');
+campaign.addEventListener('click', function (event) {
+  choiseIds(event, 'campaignId');
+});
+
+function choiseIds(event, cookie) {
+  var target = event.target; // где был клик?
+
+  document.cookie = "".concat(cookie, "=").concat(event.target.id);
+
+  for (var i = 0; i < client.children.length; i++) {
+    client.children[i].classList.remove('activated');
+  }
+
+  target.classList.add('activated');
+  location.reload();
+}
 
 /***/ }),
 

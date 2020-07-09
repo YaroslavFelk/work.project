@@ -2,37 +2,87 @@
 
 namespace App;
 
+use ATehnix\VkClient\Requests\ExecuteRequest;
+use ATehnix\VkClient\Requests\Request;
+
 class VkApi
 {
-    static function getClients()
+    public function __construct()
     {
-        $params = [
-            "v" => 5.92,
-            "access_token" => "019de166f3f004118852943ee3b80724fc80e68349f00b3bd03ba3b8bf0f35b0e5ff273333be9c5b742d6",
-            "account_id" => "1900013570"
-        ];
-        $_method = "ads.getClients";
+        $this->api = new \ATehnix\VkClient\Client();
 
-        $clients =  json_decode(file_get_contents("https://api.vk.com/method/".$_method."?".http_build_query($params)))->{'response'};
+        $this->api->setDefaultToken(env('VK_SECRET_KEY'));
+    }
 
-        foreach ($clients as $client) {
+    public function getClients()
+    {
+        $response = $this->api->request('ads.getClients', ['account_id' => env('VK_CLIENT_ID')]);
+        foreach ($response['response'] as $client) {
             Client::firstOrCreate(
-                ["id" => $client->id],
-                ["id" => $client->id, "name" => $client->name, "owner_id" => 1]
+                ["id" => $client['id']],
+                ["id" => $client['id'], "name" => $client['name'], "owner_id" => 1]
             );
         }
     }
 
-    static function getCompaign()
-    {
-        $params = [
-            "v" => 5.92,
-            "access_token" => "019de166f3f004118852943ee3b80724fc80e68349f00b3bd03ba3b8bf0f35b0e5ff273333be9c5b742d6",
-            "account_id" => "1900013570"
-        ];
-        $_method = "ads.getCampaigns";
 
-        return json_decode(file_get_contents("https://api.vk.com/method/".$_method."?".http_build_query($params)));
+    public function getCampaigns()
+    {
+//        $array = [];
+//
+//        foreach ($clients as $client) {
+//            array_push($array, new Request(
+//                    'ads.getCampaigns',
+//                    [
+//                        'account_id' => env('VK_CLIENT_ID'),
+//                        'client_id' => $client
+//                    ])
+//            );
+//
+//        }
+
+//        $execute = ExecuteRequest::make($array);
+//        var_dump($this->api);
+//        $response = $this->api->send($execute);
+
+
+        $response = $this->api->request('ads.getCampaigns',
+            ['account_id' => env('VK_CLIENT_ID'), 'client_id' => $_COOKIE['clientId']]
+        );
+
+        foreach ($response['response'] as $campaign) {
+            Campaigns::firstOrCreate(
+                ["id" => $campaign['id']],
+                ["id" => $campaign['id'], "name" => $campaign['name'], "owner_id" => $_COOKIE['clientId']]
+            );
+        }
     }
 
+    public function getStatistic()
+    {
+        $response = $this->api->request('ads.getDemographics',
+            [
+                'account_id' => env('VK_CLIENT_ID'),
+                'ids_type' => 'client',
+                'ids' => 1604593793,
+                'period' => 'overall',
+                'date_from' => 0,
+                'date_to' => 0,
+            ]);
+    }
+
+    public function getDemographics()
+    {
+        return $this->api->request('ads.getDemographics',
+            [
+                'account_id' => env('VK_CLIENT_ID'),
+                'ids_type' => 'campaign',
+                'ids' => $_COOKIE['campaignId'],
+                'period' => 'overall',
+                'date_from' => 0,
+                'date_to' => 0,
+            ]);
+
+
+    }
 }

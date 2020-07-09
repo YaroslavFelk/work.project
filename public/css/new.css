@@ -6,3 +6,14 @@
 .activated {
     background-color: #8d91b3;
 }
+
+.data {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.gender {
+    width: 500px;
+    height: 500px;
+    margin-left: 400px;
+}

@@ -5,28 +5,14 @@ window.$ = window.jQuery = $;
 
 import 'jquery-ui/ui/widgets/datepicker.js';
 
-$('#campaignRoster').click ( (event) => {
-    const ul = document.getElementById('campaignRoster')
-    let target = event.target; // где был клик?
-
-    document.cookie = `clientId=${target.id}`;
-
-
-    for(let i = 0; i < ul.children.length; i++) {
-        ul.children[i].classList.remove('activated')
-    }
-
-    target.classList.add('activated')
-
-});
-
 $( function() {
-    var dateFormat = "mm/dd/yy",
+    var dateFormat = "yy/mm/dd",
         from = $( "#from" )
             .datepicker({
                 defaultDate: "+1w",
                 changeMonth: true,
-                numberOfMonths: 1
+                numberOfMonths: 1,
+                dateFormat: "yy-mm-dd"
             })
             .on( "change", function() {
                 to.datepicker( "option", "minDate", getDate( this ) );
@@ -34,7 +20,8 @@ $( function() {
         to = $( "#to" ).datepicker({
             defaultDate: "+1w",
             changeMonth: true,
-            numberOfMonths: 1
+            numberOfMonths: 1,
+            dateFormat: "yy-mm-dd"
         })
             .on( "change", function() {
                 from.datepicker( "option", "maxDate", getDate( this ) );
@@ -43,7 +30,7 @@ $( function() {
     function getDate( element ) {
         var date;
         try {
-            date = $.datepicker.parseDate( dateFormat, element.value );
+            date = $.datepicker.parseDate( "dd/mm/yy", element.value );
         } catch( error ) {
             date = null;
         }
@@ -51,3 +38,26 @@ $( function() {
         return date;
     }
 } );
+
+const client = document.getElementById('campaignRoster')
+client.addEventListener('click',  (event) => {
+    choiseIds(event, 'clientId')
+});
+
+const campaign = document.getElementById('campaignList')
+campaign.addEventListener('click',  (event) => {
+    choiseIds(event, 'campaignId')
+});
+
+
+function choiseIds(event, cookie) {
+    let target = event.target; // где был клик?
+    document.cookie = `${cookie}=${event.target.id}`
+    for(let i = 0; i < client.children.length; i++) {
+        client.children[i].classList.remove('activated')
+    }
+
+    target.classList.add('activated')
+
+    location.reload()
+}

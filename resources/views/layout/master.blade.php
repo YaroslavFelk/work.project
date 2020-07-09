@@ -15,6 +15,8 @@
 
     <link href="{{asset('/css/new.css')}}"
           rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 </head>
 
 <body>
@@ -24,7 +26,8 @@
 <main role="main" class="container">
     @yield('content')
 </main><!-- /.container -->
+<script src="{{asset('/js/new.js')}}"></script>
+<script src="{{asset('/js/app.js')}}"></script>
 
-<script src="/js/app.js"></script>
 </body>
 </html>
