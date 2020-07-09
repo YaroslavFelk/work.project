@@ -1,5 +1,5 @@
 
-@if( $demographic)
+@isset( $demographic)
     <div class="data">
         <div class="gender">
             <canvas  id="gender" width="600" height="400"></canvas>
@@ -54,4 +54,4 @@
         </script>
     </div>
 
-@endif
+@endisset

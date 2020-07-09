@@ -32421,14 +32421,14 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(function () {
 });
 var client = document.getElementById('campaignRoster');
 client.addEventListener('click', function (event) {
-  choiseIds(event, 'clientId');
+  choiseIds(event, 'clientId', '/company');
 });
 var campaign = document.getElementById('campaignList');
 campaign.addEventListener('click', function (event) {
-  choiseIds(event, 'campaignId');
+  choiseIds(event, 'campaignId', '/demographic');
 });
 
-function choiseIds(event, cookie) {
+function choiseIds(event, cookie, redirect) {
   var target = event.target; // где был клик?
 
   document.cookie = "".concat(cookie, "=").concat(event.target.id);
@@ -32438,7 +32438,7 @@ function choiseIds(event, cookie) {
   }
 
   target.classList.add('activated');
-  location.reload();
+  window.location.href = redirect;
 }
 
 /***/ }),

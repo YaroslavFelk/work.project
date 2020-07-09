@@ -13,12 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/aa', function () {
+    return view('test');
 });
 
 Route::get('/', 'VkController@index');
 
-Route::post('/', 'VkController@store')->name('date');
+Route::get('/company', 'VkController@company');
 
-Route::post('/{client}', 'VkController@client')->name('client');
+Route::get('/demographic', 'VkController@data');

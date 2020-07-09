@@ -18,9 +18,11 @@
                 <div class="item"><i class="fas fa-list"></i>Список кампаний<i class="fas fa-sort-down"></i></div>
                 <ul class="sub-menu" id="campaignList">
                     <li id="chAllCamp">Все кампании</li>
-                    @foreach($campaigns as $campaign)
-                        <li id="{{$campaign->id}}">{{$campaign->name}}</li>
-                    @endforeach
+                    @isset($campaigns)
+                        @foreach($campaigns as $campaign)
+                            <li id="{{$campaign->id}}">{{$campaign->name}}</li>
+                        @endforeach
+                    @endisset
                 </ul>
             </li>
         </ul>

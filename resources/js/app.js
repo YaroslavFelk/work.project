@@ -41,16 +41,16 @@ $( function() {
 
 const client = document.getElementById('campaignRoster')
 client.addEventListener('click',  (event) => {
-    choiseIds(event, 'clientId')
+    choiseIds(event, 'clientId', '/company')
 });
 
 const campaign = document.getElementById('campaignList')
 campaign.addEventListener('click',  (event) => {
-    choiseIds(event, 'campaignId')
+    choiseIds(event, 'campaignId', '/demographic')
 });
 
 
-function choiseIds(event, cookie) {
+function choiseIds(event, cookie, redirect) {
     let target = event.target; // где был клик?
     document.cookie = `${cookie}=${event.target.id}`
     for(let i = 0; i < client.children.length; i++) {
@@ -59,5 +59,5 @@ function choiseIds(event, cookie) {
 
     target.classList.add('activated')
 
-    location.reload()
+    window.location.href = redirect;
 }
