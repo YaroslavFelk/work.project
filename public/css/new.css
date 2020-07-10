@@ -10,10 +10,7 @@
 .data {
     display: flex;
     flex-wrap: wrap;
-}
-
-.gender {
-    width: 500px;
-    height: 500px;
+    margin-top: 20px;
     margin-left: 400px;
 }
+

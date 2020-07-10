@@ -40,7 +40,8 @@ class VkController extends Controller
         $clients = Client::all();
         $campaigns = Campaigns::where('owner_id', $_COOKIE['clientId'])->get();
         $demographic = $this->vk->getDemographics();
+        $statistic = $this->vk->getStatistic();
 
-        return view('welcome', compact(['clients', 'campaigns', 'demographic']));
+        return view('welcome', compact(['clients', 'campaigns', 'demographic', 'statistic']));
     }
 }

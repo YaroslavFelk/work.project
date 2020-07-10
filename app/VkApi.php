@@ -60,12 +60,12 @@ class VkApi
 
     public function getStatistic()
     {
-        $response = $this->api->request('ads.getDemographics',
+        return $this->api->request('ads.getStatistics',
             [
                 'account_id' => env('VK_CLIENT_ID'),
-                'ids_type' => 'client',
-                'ids' => 1604593793,
-                'period' => 'overall',
+                'ids_type' => 'campaign',
+                'ids' => $_COOKIE['campaignId'],
+                'period' => 'day',
                 'date_from' => 0,
                 'date_to' => 0,
             ]);

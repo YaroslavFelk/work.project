@@ -16,7 +16,7 @@
     <link href="{{asset('/css/new.css')}}"
           rel="stylesheet">
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 
 <body>
@@ -28,6 +28,6 @@
 </main><!-- /.container -->
 <script src="{{asset('/js/new.js')}}"></script>
 <script src="{{asset('/js/app.js')}}"></script>
-
+<script src="{{asset('/js/data.js')}}"></script>
 </body>
 </html>
